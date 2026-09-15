@@ -1,0 +1,85 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "banner": {
+      "type": "gift-guide-banner",
+      "settings": {
+        "logo_text": "TISSO VISION",
+        "header_copy": "Find the ideal gift for your loved ones.",
+        "header_button_label": "CHOOSE GIFT",
+        "header_button_link": "",
+        "heading": "The Gift Guide",
+        "description": "<p>Discover Joy: Your Ultimate Holiday Gift Destination.<br/>Explore our curated selection and find the perfect gifts to delight your loved ones this holiday season.</p>",
+        "cta_label": "SHOP NOW",
+        "cta_link": "",
+        "footer_copy": "SUSTAINABLE, ETHICALLY MADE CLOTHES IN SIZES XXS TO 6XL",
+        "mobile_height": 500
+      }
+    },
+    "grid": {
+      "type": "gift-guide-grid",
+      "blocks": {
+        "product_yBHwnR": {
+          "type": "product",
+          "settings": {
+            "product": "black-leather-bag"
+          }
+        },
+        "product_3": {
+          "type": "product",
+          "settings": {
+            "product": "blue-silk-tuxedo"
+          }
+        },
+        "product_4": {
+          "type": "product",
+          "settings": {
+            "product": "chequered-red-shirt"
+          }
+        },
+        "product_5": {
+          "type": "product",
+          "settings": {
+            "product": "classic-leather-jacket"
+          }
+        },
+        "product_6": {
+          "type": "product",
+          "settings": {
+            "product": "classic-varsity-top"
+          }
+        },
+        "product_9NH9BK": {
+          "type": "product",
+          "settings": {
+            "product": "dark-denim-top"
+          }
+        }
+      },
+      "block_order": [
+        "product_yBHwnR",
+        "product_3",
+        "product_4",
+        "product_5",
+        "product_6",
+        "product_9NH9BK"
+      ],
+      "settings": {
+        "heading": "Tisso vision in the wild",
+        "companion_product": "soft-winter-jacket"
+      }
+    }
+  },
+  "order": [
+    "banner",
+    "grid"
+  ]
+}

@@ -1,0 +1,169 @@
+{{ 'gift-guide.css' | asset_url | stylesheet_tag }}
+
+{% liquid
+  assign section_id = 'GiftGuideBanner-' | append: section.id
+  assign gift_link = section.settings.header_button_link | default: section.settings.cta_link | default: '#gift-guide-products'
+%}
+
+<section
+  id="{{ section_id }}"
+  class="gift-guide-banner"
+  style="--banner-mobile-height: {{ section.settings.mobile_height }}px;"
+>
+  <header class="gift-guide-header">
+    <details class="gift-guide-menu-drawer">
+      <summary class="gift-guide-menu" aria-label="Toggle gift menu">
+        <span></span><span></span><span></span>
+      </summary>
+      <div class="gift-guide-menu-panel">
+        {% if section.settings.header_copy != blank %}
+          <p>{{ section.settings.header_copy | escape }}</p>
+        {% endif %}
+        {% if section.settings.header_button_label != blank %}
+          <a class="gift-guide-button gift-guide-menu-button" href="{{ gift_link }}">
+            <span>{{ section.settings.header_button_label | escape }}</span>
+            <span class="gift-guide-arrow" aria-hidden="true">&rarr;</span>
+          </a>
+        {% endif %}
+      </div>
+    </details>
+
+    {% if section.settings.logo != blank %}
+      {{ section.settings.logo | image_url: width: 500 | image_tag: class: 'gift-guide-logo-image', loading: 'eager', widths: '160, 240, 320' }}
+    {% else %}
+      <span class="gift-guide-logo-text">{{ section.settings.logo_text | escape }}</span>
+    {% endif %}
+
+    <p class="gift-guide-header-copy">{{ section.settings.header_copy | escape }}</p>
+
+    {% if section.settings.header_button_label != blank %}
+      <a class="gift-guide-button gift-guide-header-button" href="{{ gift_link }}">
+        <span>{{ section.settings.header_button_label | escape }}</span>
+        <span class="gift-guide-arrow" aria-hidden="true">→</span>
+      </a>
+    {% endif %}
+  </header>
+
+  <div class="gift-guide-banner__art" style="--gift-guide-desktop-art: url('{{ 'gift-guide-artwork.png' | asset_url }}'); --gift-guide-mobile-art: url('{{ 'gift-guide-mobile-artwork.png' | asset_url }}');">
+    <div class="gift-guide-banner__content">
+      {% if section.settings.heading != blank %}
+        <h1>{{ section.settings.heading | escape }}</h1>
+      {% endif %}
+      {% if section.settings.description != blank %}
+        <div class="gift-guide-banner__description gift-guide-banner__description--desktop">
+          {{ section.settings.description }}
+        </div>
+        <div class="gift-guide-banner__description gift-guide-banner__description--mobile">
+          {{ section.settings.mobile_description | default: section.settings.description }}
+        </div>
+      {% endif %}
+      {% if section.settings.cta_label != blank %}
+        <a class="gift-guide-button gift-guide-primary-button" href="{{ section.settings.cta_link | default: '#gift-guide-products' }}">
+          <span>{{ section.settings.cta_label | escape }}</span>
+          <span class="gift-guide-arrow" aria-hidden="true">→</span>
+        </a>
+      {% endif %}
+    </div>
+  </div>
+
+  {% if section.settings.footer_copy != blank %}
+    <p class="gift-guide-banner__footer">
+      <span class="gift-guide-banner__footer-desktop">{{ section.settings.footer_copy | escape }}</span>
+      <span class="gift-guide-banner__footer-mobile">
+        {{ section.settings.mobile_footer_copy | default: section.settings.footer_copy | escape }}
+      </span>
+    </p>
+  {% endif %}
+</section>
+
+{% schema %}
+{
+  "name": "Gift guide banner",
+  "settings": [
+    {
+      "type": "image_picker",
+      "id": "logo",
+      "label": "Logo image"
+    },
+    {
+      "type": "text",
+      "id": "logo_text",
+      "label": "Logo text",
+      "default": "TISSO VISION"
+    },
+    {
+      "type": "text",
+      "id": "header_copy",
+      "label": "Header message",
+      "default": "Find the ideal gift for your loved ones."
+    },
+    {
+      "type": "text",
+      "id": "header_button_label",
+      "label": "Header button label",
+      "default": "CHOOSE GIFT"
+    },
+    {
+      "type": "url",
+      "id": "header_button_link",
+      "label": "Header button link"
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "The Gift Guide"
+    },
+    {
+      "type": "richtext",
+      "id": "description",
+      "label": "Description",
+      "default": "<p>Discover Joy: Your Ultimate Holiday Gift Destination.<br>Explore our curated selection and find the perfect gifts to delight your loved ones this holiday season.</p>"
+    },
+    {
+      "type": "richtext",
+      "id": "mobile_description",
+      "label": "Mobile description",
+      "default": "<p>Discover Joy: Your Ultimate Holiday Gift Destination.</p>"
+    },
+    {
+      "type": "text",
+      "id": "cta_label",
+      "label": "Main button label",
+      "default": "SHOP NOW"
+    },
+    {
+      "type": "url",
+      "id": "cta_link",
+      "label": "Main button link"
+    },
+    {
+      "type": "text",
+      "id": "footer_copy",
+      "label": "Footer strip text",
+      "default": "SUSTAINABLE, ETHICALLY MADE CLOTHES IN SIZES XXS TO 6XL"
+    },
+    {
+      "type": "text",
+      "id": "mobile_footer_copy",
+      "label": "Mobile footer strip text",
+      "default": "SUSTAINABLE, ETHICALLY MADE ACTIVEWEAR"
+    },
+    {
+      "type": "range",
+      "id": "mobile_height",
+      "label": "Mobile artwork height",
+      "min": 350,
+      "max": 800,
+      "step": 10,
+      "default": 500,
+      "unit": "px"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Gift guide banner"
+    }
+  ]
+}
+{% endschema %}

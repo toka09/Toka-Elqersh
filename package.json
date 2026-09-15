@@ -1,0 +1,13 @@
+{
+  "name": "horizon-gift-guide-theme",
+  "private": true,
+  "scripts": {
+    "test": "node scripts/test-gift-guide.mjs",
+    "check:structure": "node scripts/check-structure.mjs",
+    "check:js": "tsc --noEmit --project assets/jsconfig.json",
+    "check:theme": "shopify theme check --path ."
+  },
+  "devDependencies": {
+    "typescript": "5.9.3"
+  }
+}

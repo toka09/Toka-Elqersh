@@ -1,0 +1,720 @@
+.gift-guide-banner,
+.gift-guide-products {
+  color: #050505;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.gift-guide-header {
+  position: relative;
+  min-height: clamp(42px, 4.4vw, 90px);
+  padding: 0 10%;
+  background: #fff;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  align-items: center;
+  gap: 20px;
+}
+
+.gift-guide-logo-text {
+  font-size: clamp(15px, 1.85vw, 40px);
+  letter-spacing: 0.04em;
+  font-weight: 700;
+}
+
+.gift-guide-logo-image {
+  max-width: 240px;
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.gift-guide-header-copy {
+  margin: 0;
+  font-size: clamp(10px, 1.05vw, 22px);
+  text-align: center;
+}
+
+.gift-guide-menu-drawer,
+.gift-guide-menu {
+  display: none;
+}
+
+.gift-guide-button {
+  box-sizing: border-box;
+  min-height: clamp(32px, 3vw, 64px);
+  padding: 0 clamp(14px, 1.7vw, 24px);
+  color: #fff;
+  background: #000;
+  border: 1px solid #000;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: clamp(12px, 2vw, 34px);
+  font-size: clamp(10px, 1vw, 20px);
+  line-height: 1;
+  transition: background 0.2s ease, color 0.2s ease, transform 0.2s ease;
+}
+
+.gift-guide-button:hover {
+  background: #fff;
+  color: #000;
+}
+
+.gift-guide-button:hover .gift-guide-arrow {
+  transform: translateX(7px);
+}
+
+.gift-guide-arrow {
+  font-size: 25px;
+  line-height: 0.5;
+  transition: transform 0.2s ease;
+}
+
+.gift-guide-header-button {
+  justify-self: end;
+  color: #000;
+  background: #fff333;
+  border-color: #fff333;
+}
+
+.gift-guide-header-button:hover {
+  background: #000;
+  color: #fff;
+  border-color: #000;
+}
+
+.gift-guide-banner__art {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 1.85;
+  overflow: hidden;
+  background-color: #fff;
+  background-image: var(--gift-guide-desktop-art);
+  background-size: 100% auto;
+  background-position: center -1.5vw;
+}
+
+.gift-guide-banner__content {
+  position: absolute;
+  z-index: 1;
+  top: 63%;
+  left: 10%;
+  width: min(500px, 35%);
+}
+
+.gift-guide-banner h1 {
+  margin: 0 0 clamp(18px, 2.4vw, 34px);
+  font-size: clamp(38px, 4.4vw, 90px);
+  line-height: 1.08;
+  letter-spacing: -0.035em;
+}
+
+.gift-guide-banner__description {
+  margin-bottom: clamp(20px, 3vw, 42px);
+  font-size: clamp(12px, 1.2vw, 24px);
+  line-height: 1.35;
+}
+
+.gift-guide-banner__description p {
+  margin: 0;
+}
+
+.gift-guide-banner__description--mobile,
+.gift-guide-banner__footer-mobile {
+  display: none;
+}
+
+.gift-guide-primary-button {
+  min-width: clamp(120px, 14vw, 280px);
+}
+
+.gift-guide-banner__footer {
+  min-height: clamp(24px, 2.4vw, 48px);
+  padding: 4px 20px;
+  margin: 0;
+  background: #fff;
+  font-size: clamp(11px, 1.1vw, 23px);
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.gift-guide-products {
+  padding: clamp(52px, 7vw, 128px) 3.2% 72px;
+}
+
+.gift-guide-products__inner {
+  max-width: 1720px;
+  margin: auto;
+}
+
+.gift-guide-products h2 {
+  margin: 0 0 clamp(24px, 3.5vw, 60px);
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: clamp(36px, 4vw, 70px);
+  font-weight: 400;
+  line-height: 1;
+}
+
+.gift-guide-products__grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+}
+
+.gift-guide-product-card {
+  position: relative;
+  aspect-ratio: 1 / 1;
+  overflow: hidden;
+  background: #eee;
+}
+
+.gift-guide-product-card img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.gift-guide-hotspot {
+  position: absolute;
+  left: 62%;
+  top: 52%;
+  width: 28px;
+  height: 28px;
+  padding: 0;
+  border: 0;
+  border-radius: 50%;
+  color: #000;
+  background: rgba(255, 255, 255, 0.9);
+  font-size: 22px;
+  line-height: 1;
+  cursor: pointer;
+  transition: transform 0.2s ease;
+}
+
+.gift-guide-hotspot:hover {
+  transform: scale(1.18);
+}
+
+.gift-guide-modal[aria-hidden="true"] {
+  display: none;
+}
+
+.gift-guide-modal {
+  position: fixed;
+  z-index: 9999;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  padding: 24px;
+}
+
+.gift-guide-modal__overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.35);
+}
+
+.gift-guide-modal__dialog {
+  position: relative;
+  z-index: 1;
+  width: min(340px, 100%);
+  max-height: calc(100vh - 48px);
+  overflow-y: auto;
+  padding: 18px;
+  background: #fff;
+  box-shadow: 0 18px 50px rgba(0, 0, 0, 0.2);
+}
+
+.gift-guide-modal__close {
+  position: absolute;
+  right: 10px;
+  top: 8px;
+  z-index: 2;
+  border: 0;
+  background: none;
+  font-size: 22px;
+  line-height: 1;
+  cursor: pointer;
+}
+
+.gift-guide-modal__product {
+  display: grid;
+  grid-template-columns: 112px minmax(0, 1fr);
+  align-items: start;
+  gap: 14px;
+  padding: 14px 0 0;
+}
+
+.gift-guide-modal__media img {
+  width: 100%;
+  aspect-ratio: 1 / 1.28;
+  object-fit: cover;
+}
+
+.gift-guide-modal__details h3 {
+  margin: 0 0 8px;
+  font-size: 16px;
+  font-weight: 400;
+}
+
+.gift-guide-modal__price {
+  margin: 0 0 8px;
+  font-size: 15px;
+}
+
+.gift-guide-modal__description {
+  margin-bottom: 0;
+  font-size: 12px;
+  line-height: 1.25;
+}
+
+.gift-guide-modal__form {
+  grid-column: 1 / -1;
+}
+
+.gift-guide-modal__description p {
+  margin: 0;
+}
+
+.gift-guide-option-group {
+  padding: 0;
+  margin: 0 0 10px;
+  border: 0;
+}
+
+.gift-guide-option-group legend {
+  margin-bottom: 4px;
+  font-size: 11px;
+}
+
+.gift-guide-option-list {
+  display: flex;
+}
+
+.gift-guide-option {
+  position: relative;
+  flex: 1;
+  min-height: 32px;
+  padding: 6px 8px;
+  border: 1px solid #aaa;
+  background: #eef0f2;
+  font: inherit;
+  font-size: 12px;
+  text-align: left;
+  cursor: pointer;
+}
+
+.gift-guide-option + .gift-guide-option {
+  border-left: 0;
+}
+
+.gift-guide-option.is-selected {
+  background: #050505;
+  color: #fff;
+}
+
+.gift-guide-option-group--color .gift-guide-option {
+  padding-left: 8px;
+}
+
+.gift-guide-option-group--color .gift-guide-option:first-child {
+  padding-left: 13px;
+}
+
+.gift-guide-option-group--color .gift-guide-option:first-child::before {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  width: 4px;
+  background: var(--option-accent, #111);
+  content: '';
+}
+
+.gift-guide-option:focus-visible,
+.gift-guide-size-trigger:focus-visible,
+.gift-guide-size-option:focus-visible {
+  outline: 2px solid #1b4f94;
+  outline-offset: 2px;
+}
+
+.gift-guide-size-picker {
+  position: relative;
+}
+
+.gift-guide-size-picker details {
+  position: relative;
+}
+
+.gift-guide-size-trigger {
+  position: relative;
+  display: flex;
+  align-items: center;
+  min-height: 32px;
+  padding: 5px 38px 5px 8px;
+  border: 1px solid #999;
+  background: #fff;
+  font-size: 12px;
+  cursor: pointer;
+  list-style: none;
+}
+
+.gift-guide-size-trigger::-webkit-details-marker {
+  display: none;
+}
+
+.gift-guide-size-trigger::after {
+  position: absolute;
+  right: 14px;
+  width: 8px;
+  height: 8px;
+  border-right: 1px solid currentColor;
+  border-bottom: 1px solid currentColor;
+  transform: rotate(45deg) translateY(-2px);
+  content: '';
+}
+
+.gift-guide-size-picker details[open] .gift-guide-size-trigger::after {
+  transform: rotate(225deg) translateY(-2px);
+}
+
+.gift-guide-size-options {
+  position: absolute;
+  z-index: 5;
+  top: calc(100% - 1px);
+  right: 0;
+  left: 0;
+  max-height: 230px;
+  overflow-y: auto;
+  border: 1px solid #999;
+  background: #fff;
+}
+
+.gift-guide-size-option {
+  display: block;
+  width: 100%;
+  min-height: 30px;
+  padding: 5px;
+  border: 0;
+  background: #fff;
+  color: #111;
+  font: inherit;
+  font-size: 12px;
+  text-align: center;
+  cursor: pointer;
+}
+
+.gift-guide-size-option:hover,
+.gift-guide-size-option.is-selected {
+  background: #111;
+  color: #fff;
+}
+
+.gift-guide-add-button {
+  width: 100%;
+  min-height: 38px;
+  margin-top: 8px;
+  font-size: 12px;
+}
+
+.gift-guide-add-button:disabled {
+  opacity: 0.55;
+  cursor: wait;
+}
+
+.gift-guide-form-message {
+  min-height: 14px;
+  margin: 8px 0 0;
+  font-size: 11px;
+}
+
+.gift-guide-modal-open {
+  overflow: hidden;
+}
+
+.gift-guide-cart[aria-hidden="true"] {
+  display: none;
+}
+
+.gift-guide-cart [hidden] {
+  display: none;
+}
+
+.gift-guide-cart {
+  position: fixed;
+  z-index: 9999;
+  inset: 0;
+  color: #050505;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.gift-guide-cart__overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.35);
+}
+
+.gift-guide-cart__panel {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  width: min(430px, 100%);
+  overflow-y: auto;
+  padding: 32px 24px;
+  background: #fff;
+}
+
+.gift-guide-cart__panel h2 {
+  margin: 0 0 24px;
+  font: 400 28px Georgia, "Times New Roman", serif;
+}
+
+.gift-guide-cart__notice {
+  padding: 12px;
+  background: #fff7d6;
+  font-size: 13px;
+  line-height: 1.4;
+}
+
+.gift-guide-cart__close {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  border: 0;
+  background: none;
+  font-size: 26px;
+  cursor: pointer;
+}
+
+.gift-guide-cart__item {
+  display: grid;
+  grid-template-columns: 80px 1fr;
+  gap: 16px;
+  padding: 16px 0;
+  border-top: 1px solid #ddd;
+}
+
+.gift-guide-cart__item img {
+  width: 80px;
+  height: 100px;
+  object-fit: cover;
+}
+
+.gift-guide-cart__item p {
+  margin: 0 0 8px;
+}
+
+.gift-guide-cart__item small,
+.gift-guide-cart__item strong {
+  display: block;
+  margin-top: 4px;
+}
+
+.gift-guide-cart__remove {
+  margin-top: 10px;
+  padding: 0;
+  border: 0;
+  background: none;
+  color: #050505;
+  font: inherit;
+  font-size: 13px;
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+.gift-guide-cart__remove:disabled {
+  opacity: 0.5;
+  cursor: wait;
+}
+
+.gift-guide-cart__total {
+  border-top: 1px solid #ddd;
+  padding-top: 16px;
+  font-weight: 700;
+}
+
+.gift-guide-cart__actions {
+  display: grid;
+  gap: 10px;
+}
+
+@media screen and (max-width: 749px) {
+  .gift-guide-header {
+    min-height: 69px;
+    grid-template-columns: 34px 1fr 34px;
+    padding: 0 14px;
+  }
+
+  .gift-guide-menu-drawer {
+    display: block;
+    justify-self: start;
+  }
+
+  .gift-guide-menu {
+    width: 24px;
+    padding: 0;
+    display: grid;
+    gap: 4px;
+    border: 0;
+    background: none;
+    cursor: pointer;
+    list-style: none;
+  }
+
+  .gift-guide-menu::-webkit-details-marker {
+    display: none;
+  }
+
+  .gift-guide-menu span {
+    width: 20px;
+    height: 2px;
+    background: #000;
+  }
+
+  .gift-guide-menu-drawer[open] .gift-guide-menu span {
+    display: none;
+  }
+
+  .gift-guide-menu-drawer[open] .gift-guide-menu::before {
+    content: '×';
+    font-size: 26px;
+    line-height: 20px;
+  }
+
+  .gift-guide-menu-panel {
+    position: absolute;
+    z-index: 10;
+    top: 100%;
+    left: 0;
+    right: 0;
+    padding: 20px 16px 24px;
+    background: #fff;
+    border-bottom: 1px solid #e7e7e7;
+    text-align: center;
+  }
+
+  .gift-guide-menu-panel p {
+    margin: 0 0 14px;
+    font-size: 14px;
+    line-height: 1.3;
+  }
+
+  .gift-guide-menu-button {
+    min-width: 230px;
+    min-height: 42px;
+    color: #000;
+    background: #fff333;
+    border-color: #fff333;
+    font-size: 13px;
+    gap: 24px;
+  }
+
+  .gift-guide-logo-text {
+    justify-self: center;
+    font-size: clamp(20px, 6.5vw, 27px);
+    white-space: nowrap;
+  }
+
+  .gift-guide-logo-image {
+    justify-self: center;
+    max-width: 170px;
+  }
+
+  .gift-guide-header-copy,
+  .gift-guide-header-button {
+    display: none;
+  }
+
+  .gift-guide-banner__art {
+    height: min(var(--banner-mobile-height), 109vw);
+    min-height: 0;
+    background-image: var(--gift-guide-mobile-art);
+    background-repeat: no-repeat;
+    background-size: auto 120%;
+    background-position: center 14px;
+  }
+
+  .gift-guide-banner__content {
+    top: 42px;
+    bottom: 34px;
+    left: 18px;
+    right: 18px;
+    width: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  .gift-guide-banner h1 {
+    margin-bottom: 20px;
+    font-size: 34px;
+    letter-spacing: -0.035em;
+  }
+
+  .gift-guide-banner__description {
+    margin: 0;
+    max-width: 330px;
+    font-size: 16px;
+  }
+
+  .gift-guide-banner__description--desktop,
+  .gift-guide-banner__footer-desktop {
+    display: none;
+  }
+
+  .gift-guide-banner__description--mobile,
+  .gift-guide-banner__footer-mobile {
+    display: block;
+  }
+
+  .gift-guide-primary-button {
+    margin-top: auto;
+    min-width: 190px;
+    min-height: 48px;
+  }
+
+  .gift-guide-banner__footer {
+    min-height: 42px;
+    font-size: 12px;
+    white-space: nowrap;
+    overflow: hidden;
+  }
+
+  .gift-guide-products {
+    padding: 37px 15px 30px;
+  }
+
+  .gift-guide-products h2 {
+    margin-bottom: 25px;
+    font-size: clamp(20px, 6.6vw, 26px);
+    text-align: center;
+  }
+
+  .gift-guide-products__grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 4px;
+  }
+
+  .gift-guide-hotspot {
+    left: 60%;
+    top: 15%;
+    width: 22px;
+    height: 22px;
+    font-size: 18px;
+  }
+
+  .gift-guide-modal {
+    align-items: center;
+    padding: 12px;
+  }
+
+  .gift-guide-modal__dialog {
+    max-height: 88vh;
+  }
+}

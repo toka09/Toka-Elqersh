@@ -1,0 +1,157 @@
+{{ 'gift-guide.css' | asset_url | stylesheet_tag }}
+<script src="{{ 'gift-guide.js' | asset_url }}" defer="defer"></script>
+
+{% liquid
+  assign section_id = 'GiftGuideGrid-' | append: section.id
+  assign companion_product = section.settings.companion_product
+  if companion_product == blank
+    assign companion_product = settings.soft_winter_jacket_product
+  endif
+  if companion_product == blank
+    assign companion_product = all_products['soft-winter-jacket']
+  endif
+  if companion_product == blank
+    for candidate in collections.all.products
+      assign candidate_title = candidate.title | downcase | strip
+      if candidate_title == 'soft winter jacket'
+        assign companion_product = candidate
+        break
+      endif
+    endfor
+  endif
+  assign companion_variant = companion_product.variants | where: 'available', true | first
+%}
+
+<section id="{{ section_id }}" class="gift-guide-products" data-gift-guide-grid>
+  <div id="gift-guide-products" class="gift-guide-products__inner">
+    {% if section.settings.heading != blank %}
+      <h2>{{ section.settings.heading | escape }}</h2>
+    {% endif %}
+
+    <div class="gift-guide-products__grid">
+      {% for block in section.blocks %}
+        {% assign product = block.settings.product %}
+        {% if product != blank %}
+          <article
+            class="gift-guide-product-card"
+            data-product-handle="{{ product.handle | escape }}"
+            {{ block.shopify_attributes }}
+          >
+            {% if product.featured_image != blank %}
+              <img
+                src="{{ product.featured_image | image_url: width: 1000 }}"
+                alt="{{ product.featured_image.alt | default: product.title | escape }}"
+                width="{{ product.featured_image.width }}"
+                height="{{ product.featured_image.height }}"
+                loading="lazy"
+              >
+            {% endif %}
+            <button
+              class="gift-guide-hotspot"
+              type="button"
+              data-gift-guide-open
+              aria-label="View {{ product.title | escape }}"
+            >
+              <span aria-hidden="true">+</span>
+            </button>
+          </article>
+        {% endif %}
+      {% endfor %}
+    </div>
+  </div>
+
+  <div class="gift-guide-modal" data-gift-guide-modal aria-hidden="true">
+    <div class="gift-guide-modal__overlay" data-gift-guide-close></div>
+    <section
+      class="gift-guide-modal__dialog"
+      role="dialog"
+      aria-modal="true"
+      aria-label="Product details"
+      aria-labelledby="{{ section_id }}-title"
+    >
+      <button class="gift-guide-modal__close" type="button" data-gift-guide-close aria-label="Close product details">×</button>
+      <div class="gift-guide-modal__product" data-gift-guide-modal-content></div>
+    </section>
+  </div>
+
+  <div class="gift-guide-cart" data-gift-guide-cart aria-hidden="true">
+    <div class="gift-guide-cart__overlay" data-gift-guide-cart-close></div>
+    <section class="gift-guide-cart__panel" role="dialog" aria-modal="true" aria-label="Your cart">
+      <button class="gift-guide-cart__close" type="button" data-gift-guide-cart-close aria-label="Close cart">×</button>
+      <h2>Your cart</h2>
+      <p class="gift-guide-cart__notice" data-gift-guide-cart-notice aria-live="polite" hidden></p>
+      <div data-gift-guide-cart-items aria-live="polite"></div>
+      <p class="gift-guide-cart__total" data-gift-guide-cart-total></p>
+      <div class="gift-guide-cart__actions">
+        <a class="gift-guide-button" href="{{ routes.cart_url }}">View cart</a>
+        <a class="gift-guide-button" href="/checkout" data-gift-guide-checkout>Continue to checkout</a>
+      </div>
+    </section>
+  </div>
+
+  <script type="application/json" data-gift-guide-companion>
+    {
+      "handle": {{ companion_product.handle | json }},
+      "variant_id": {{ companion_variant.id | json }}
+    }
+  </script>
+</section>
+
+{% schema %}
+{
+  "name": "Gift guide product grid",
+  "settings": [
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Tisso vision in the wild"
+    },
+    {
+      "type": "product",
+      "id": "companion_product",
+      "label": "Soft Winter Jacket companion",
+      "info": "Select the product to add with a Black and Medium choice. If empty, the theme setting or a product named Soft Winter Jacket is used."
+    }
+  ],
+  "blocks": [
+    {
+      "type": "product",
+      "name": "Product",
+      "settings": [
+        {
+          "type": "product",
+          "id": "product",
+          "label": "Product"
+        }
+      ]
+    }
+  ],
+  "max_blocks": 6,
+  "presets": [
+    {
+      "name": "Gift guide product grid",
+      "blocks": [
+        {
+          "type": "product"
+        },
+        {
+          "type": "product"
+        },
+        {
+          "type": "product"
+        },
+        {
+          "type": "product"
+        },
+        {
+          "type": "product"
+        },
+        {
+          "type": "product"
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}
